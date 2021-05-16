@@ -7,7 +7,8 @@ package com.xyz.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.math.BigInteger;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Sebastian
  */
 @Entity
-@Table(name = "CLIENTE", catalog = "", schema = "EMPRESAXYZ")
+@Table(name = "CLIENTE")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
@@ -38,7 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Cliente.findByNombre", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre")
     , @NamedQuery(name = "Cliente.findByApellido", query = "SELECT c FROM Cliente c WHERE c.apellido = :apellido")
     , @NamedQuery(name = "Cliente.findByDireccion", query = "SELECT c FROM Cliente c WHERE c.direccion = :direccion")
-    , @NamedQuery(name = "Cliente.findByTelefono", query = "SELECT c FROM Cliente c WHERE c.telefono = :telefono")})
+    , @NamedQuery(name = "Cliente.findByTelefono", query = "SELECT c FROM Cliente c WHERE c.telefono = :telefono")
+    , @NamedQuery(name = "Cliente.findByCedulaCiudadania", query = "SELECT c FROM Cliente c WHERE c.cedulaCiudadania = :cedulaCiudadania")})
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,28 +48,38 @@ public class Cliente implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID_CLIENTE", nullable = false, precision = 0, scale = -127)
+    @Column(name = "ID_CLIENTE")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_cliente")
-    @SequenceGenerator(name = "seq_cliente", sequenceName = "incremento_id_cliente", allocationSize = 1)
+    @SequenceGenerator(name = "seq_cliente", sequenceName = "INCREMENTO_ID_CLIENTE", allocationSize = 1)
     private BigDecimal idCliente;
     @Size(max = 50)
-    @Column(name = "NOMBRE", length = 50)
+    @Column(name = "NOMBRE")
     private String nombre;
     @Size(max = 50)
-    @Column(name = "APELLIDO", length = 50)
+    @Column(name = "APELLIDO")
     private String apellido;
     @Size(max = 150)
-    @Column(name = "DIRECCION", length = 150)
+    @Column(name = "DIRECCION")
     private String direccion;
     @Size(max = 20)
-    @Column(name = "TELEFONO", length = 20)
+    @Column(name = "TELEFONO")
     private String telefono;
+    @Column(name = "CEDULA_CIUDADANIA")
+    private Integer cedulaCiudadania;
     @OneToMany(mappedBy = "idCliente", fetch = FetchType.LAZY)
-    private Collection<TarjetaCredito> tarjetaCreditoCollection;
+    private List<TarjetaCredito> tarjetaCreditoList;
 
     public Cliente() {
     }
 
+    public Cliente(String nombre, String apellido, String direccion, String telefono, Integer cedulaCiudadania) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.cedulaCiudadania = cedulaCiudadania;
+    }
+    
     public Cliente(BigDecimal idCliente) {
         this.idCliente = idCliente;
     }
@@ -112,13 +124,21 @@ public class Cliente implements Serializable {
         this.telefono = telefono;
     }
 
-    @XmlTransient
-    public Collection<TarjetaCredito> getTarjetaCreditoCollection() {
-        return tarjetaCreditoCollection;
+    public Integer getCedulaCiudadania() {
+        return cedulaCiudadania;
     }
 
-    public void setTarjetaCreditoCollection(Collection<TarjetaCredito> tarjetaCreditoCollection) {
-        this.tarjetaCreditoCollection = tarjetaCreditoCollection;
+    public void setCedulaCiudadania(Integer cedulaCiudadania) {
+        this.cedulaCiudadania = cedulaCiudadania;
+    }
+
+    @XmlTransient
+    public List<TarjetaCredito> getTarjetaCreditoList() {
+        return tarjetaCreditoList;
+    }
+
+    public void setTarjetaCreditoList(List<TarjetaCredito> tarjetaCreditoList) {
+        this.tarjetaCreditoList = tarjetaCreditoList;
     }
 
     @Override

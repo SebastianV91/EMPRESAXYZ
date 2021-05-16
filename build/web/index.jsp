@@ -12,6 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        
+        <h1>EMPRESA XYZ</h1>
+        
+        <p><a href="cliente.jsp">Cliente</a></p>
+        
+        
+        
     </body>
 </html>

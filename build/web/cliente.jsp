@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 14/05/2021, 11:41:39 PM
+    Document   : cliente
+    Created on : 15/05/2021, 12:32:18 PM
     Author     : Sebastian
 --%>
 
@@ -9,15 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>CLIENTE</title>
     </head>
     <body>
         
-        <h1>EMPRESA XYZ</h1>
-        
-        <p><a href="cliente.jsp">Cliente</a></p>
-        
-        
+        <a href="registrar_cliente.jsp" >REGISTRAR CLIENTE</a> <br>
+        <a href="editar_cliente.jsp" >EDITAR CLIENTE</a>
         
     </body>
 </html>

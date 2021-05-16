@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Sebastian
  */
 @Entity
-@Table(name = "TARJETA_CREDITO", catalog = "", schema = "EMPRESAXYZ")
+@Table(name = "TARJETA_CREDITO")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TarjetaCredito.findAll", query = "SELECT t FROM TarjetaCredito t")
@@ -45,10 +45,10 @@ public class TarjetaCredito implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID_TARJETA_CREDITO", nullable = false, precision = 0, scale = -127)
+    @Column(name = "ID_TARJETA_CREDITO")
     private BigDecimal idTarjetaCredito;
     @Size(max = 50)
-    @Column(name = "NOMBRE", length = 50)
+    @Column(name = "NOMBRE")
     private String nombre;
     @Column(name = "CODIGO")
     private BigInteger codigo;
