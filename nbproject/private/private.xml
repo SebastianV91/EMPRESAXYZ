@@ -6,10 +6,10 @@
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/web/editar_cliente.jsp</file>
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/web/cliente.jsp</file>
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/web/registrar_cliente.jsp</file>
+            <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/src/java/com/xyz/controller/ServletCliente.java</file>
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/src/java/com/xyz/entities/Cliente.java</file>
+            <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/src/java/com/xyz/dao/ClienteFacadeLocal.java</file>
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/web/index.jsp</file>
-            <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/src/java/com/xyz/controller/ActualizacionClienteServlet.java</file>
-            <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/src/java/com/xyz/controller/RegistroClienteServlet.java</file>
         </group>
     </open-files>
 </project-private>

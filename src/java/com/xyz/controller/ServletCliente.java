@@ -9,6 +9,7 @@ import com.xyz.dao.ClienteFacadeLocal;
 import com.xyz.entities.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -79,6 +80,14 @@ public class ServletCliente extends HttpServlet {
         String accion = request.getParameter("accion");
         switch(accion){
             
+            case "Lista":
+                          
+                List<Cliente> datos = crud.findAll();
+                request.setAttribute("datos", datos);
+                request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                
+            break;    
+                
             case "Nuevo":
                 request.getRequestDispatcher("registrar_cliente.jsp").forward(request, response);
             break;
@@ -100,6 +109,57 @@ public class ServletCliente extends HttpServlet {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 
             break;
+            
+            case "Editar":
+                
+                String ide = request.getParameter("id");
+                int id = Integer.parseInt(ide);
+                Cliente cliente1 = crud.find(id);
+                request.setAttribute("cliente", cliente1);
+                request.getRequestDispatcher("editar_cliente.jsp").forward(request, response);
+                
+            break;
+            
+            case "Actualizar":
+                
+                String cedula1 = request.getParameter("txtCedulaCiudadania");
+                String nombre1 = request.getParameter("txtNombre");
+                String apellidos1 = request.getParameter("txtApellido");
+                String direccion1 = request.getParameter("txtDireccion");
+                String telefono1 = request.getParameter("txtTelefono");
+                String ide1 = request.getParameter("txtId");
+                
+                int id1 = Integer.parseInt(ide1);
+                int cc1 = Integer.parseInt(cedula1);
+                
+                Cliente c = new Cliente();
+                
+                c.setIdCliente(id1);
+                c.setCedulaCiudadania(cc1);
+                c.setNombre(nombre1);
+                c.setApellido(apellidos1);
+                c.setDireccion(direccion1);
+                c.setTelefono(telefono1);
+                
+                crud.edit(c);
+                
+                request.getRequestDispatcher("ServletCliente?accion=Lista").forward(request, response);
+                
+            break;                                                  
+            
+/*            case "Eliminar":
+                
+                String ide2 = request.getParameter("id");
+                
+                int id2 = Integer.parseInt(ide2);
+                
+                Cliente c2 = new Cliente();
+                
+                crud.remove(c2);
+                
+                request.getRequestDispatcher("ServletCliente?accion=Lista").forward(request, response);
+                
+            break;                                                                  */
             
             default:
                 throw new AssertionError();

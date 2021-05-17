@@ -51,7 +51,7 @@ public class Cliente implements Serializable {
     @Column(name = "ID_CLIENTE")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_cliente")
     @SequenceGenerator(name = "seq_cliente", sequenceName = "INCREMENTO_ID_CLIENTE", allocationSize = 1)
-    private BigDecimal idCliente;
+    private Integer idCliente;
     @Size(max = 50)
     @Column(name = "NOMBRE")
     private String nombre;
@@ -80,15 +80,15 @@ public class Cliente implements Serializable {
         this.cedulaCiudadania = cedulaCiudadania;
     }
     
-    public Cliente(BigDecimal idCliente) {
+    public Cliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 
-    public BigDecimal getIdCliente() {
+    public Integer getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(BigDecimal idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 
