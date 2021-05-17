@@ -13,8 +13,11 @@
     </head>
     <body>
         
-        <a href="registrar_cliente.jsp" >REGISTRAR CLIENTE</a> <br>
-        <a href="editar_cliente.jsp" >EDITAR CLIENTE</a>
+        <form action="ServletCliente" method="POST" >
+            <input type="submit" name="accion" value="Nuevo" />
+            
+            
+        </form>
         
     </body>
 </html>

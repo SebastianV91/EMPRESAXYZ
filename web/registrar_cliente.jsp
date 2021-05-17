@@ -28,7 +28,7 @@
 
                     <div class="ml-5">
 
-                        <form action="RegistroClienteServlet.dll" method="POST" >       
+                        <form action="ServletCliente" method="POST" >       
 
                             <div class="form-group">
                                 <input type="text" class="form-control font-italic" name="txtCedulaCiudadania" placeholder="CEDULA DE CIUDADANIA" /><br>

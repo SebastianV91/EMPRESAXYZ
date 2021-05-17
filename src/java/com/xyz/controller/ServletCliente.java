@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Sebastian
  */
-public class ActualizacionClienteServlet extends HttpServlet {
+public class ServletCliente extends HttpServlet {
     
     @EJB(name = "crud")
     private ClienteFacadeLocal crud;
@@ -35,39 +35,16 @@ public class ActualizacionClienteServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String cedula = request.getParameter("txtCedulaCiudadania");
-        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ActualizacionClienteServlet</title>");            
+            out.println("<title>Servlet ServletCliente</title>");            
             out.println("</head>");
             out.println("<body>");
-            
-            int cc = Integer.parseInt(cedula);
-            
-            Cliente x = crud.find(cc);
-            
-            if(x == null){
-            
-                out.println("<p>No existe Cedula de Ciudadania</p>");
-            
-            }else{
-                
-                out.println("<form action='editar.dll' method='post'>");
-                out.println("<form type='text' name=''> <br/>");
-                out.println("<form type='text' name=''> <br/>");
-                out.println("<form type='text' name=''> <br/>");
-                out.println("<form type='text' name=''> <br/>");
-                out.println("<form type='text' name=''> <br/>");
-                out.println("</form>");
-                
-            }
-            
+            out.println("<h1>Servlet ServletCliente at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -99,7 +76,35 @@ public class ActualizacionClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String accion = request.getParameter("accion");
+        switch(accion){
+            
+            case "Nuevo":
+                request.getRequestDispatcher("registrar_cliente.jsp").forward(request, response);
+            break;
+                  
+            case "Guardar":
+                
+                String cedula = request.getParameter("txtCedulaCiudadania");
+                String nombre = request.getParameter("txtNombre");
+                String apellidos = request.getParameter("txtApellido");
+                String direccion = request.getParameter("txtDireccion");
+                String telefono = request.getParameter("txtTelefono");
+                
+                int cc = Integer.parseInt(cedula);
+                
+                Cliente cliente = new Cliente(nombre, apellidos, direccion, telefono, cc);
+                
+                crud.create(cliente);
+                
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                
+            break;
+            
+            default:
+                throw new AssertionError();
+        }
+        
     }
 
     /**

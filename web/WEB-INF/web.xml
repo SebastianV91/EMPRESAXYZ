@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>RegistroClienteServlet</servlet-name>
-        <servlet-class>com.xyz.controller.RegistroClienteServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ActualizacionClienteServlet</servlet-name>
-        <servlet-class>com.xyz.controller.ActualizacionClienteServlet</servlet-class>
+        <servlet-name>ServletCliente</servlet-name>
+        <servlet-class>com.xyz.controller.ServletCliente</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroClienteServlet</servlet-name>
-        <url-pattern>/RegistroClienteServlet.dll</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ActualizacionClienteServlet</servlet-name>
-        <url-pattern>/ActualizacionClienteServlet.dll</url-pattern>
+        <servlet-name>ServletCliente</servlet-name>
+        <url-pattern>/ServletCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

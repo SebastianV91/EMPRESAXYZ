@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/web/editar_cliente.jsp</file>
+            <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/web/cliente.jsp</file>
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/web/registrar_cliente.jsp</file>
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/src/java/com/xyz/entities/Cliente.java</file>
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/web/index.jsp</file>
+            <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/src/java/com/xyz/controller/ActualizacionClienteServlet.java</file>
             <file>file:/C:/Users/Sebastian/Documents/NetBeansProjects/XYZ/src/java/com/xyz/controller/RegistroClienteServlet.java</file>
         </group>
     </open-files>

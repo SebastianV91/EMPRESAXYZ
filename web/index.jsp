@@ -17,7 +17,5 @@
         
         <p><a href="cliente.jsp">Cliente</a></p>
         
-        
-        
     </body>
 </html>
