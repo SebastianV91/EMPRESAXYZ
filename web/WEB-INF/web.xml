@@ -4,9 +4,17 @@
         <servlet-name>ServletCliente</servlet-name>
         <servlet-class>com.xyz.controller.ServletCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletTarjetaCredito</servlet-name>
+        <servlet-class>com.xyz.controller.ServletTarjetaCredito</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletCliente</servlet-name>
         <url-pattern>/ServletCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletTarjetaCredito</servlet-name>
+        <url-pattern>/ServletTarjetaCredito</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

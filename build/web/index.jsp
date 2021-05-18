@@ -15,7 +15,9 @@
         
         <h1>EMPRESA XYZ</h1>
         
-        <p><a href="cliente.jsp">Cliente</a></p>
+        <p><a href="cliente.jsp">CLIENTE</a></p><br>
+        
+        <p><a href="tarjeta_credito.jsp">TARJETA DE CREDITO</a></p>
         
     </body>
 </html>

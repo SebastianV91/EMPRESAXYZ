@@ -13,11 +13,14 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,7 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "TarjetaCredito.findByNombre", query = "SELECT t FROM TarjetaCredito t WHERE t.nombre = :nombre")
     , @NamedQuery(name = "TarjetaCredito.findByCodigo", query = "SELECT t FROM TarjetaCredito t WHERE t.codigo = :codigo")
     , @NamedQuery(name = "TarjetaCredito.findByFechaVencimiento", query = "SELECT t FROM TarjetaCredito t WHERE t.fechaVencimiento = :fechaVencimiento")})
-public class TarjetaCredito implements Serializable {
+    public class TarjetaCredito implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -46,12 +49,14 @@ public class TarjetaCredito implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_TARJETA_CREDITO")
-    private BigDecimal idTarjetaCredito;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_tarjeta_credito")
+    @SequenceGenerator(name = "seq_tarjeta_credito", sequenceName = "INCREMENT_ID_TARJETA_CREDITO", allocationSize = 1)
+    private Integer idTarjetaCredito;
     @Size(max = 50)
     @Column(name = "NOMBRE")
     private String nombre;
     @Column(name = "CODIGO")
-    private BigInteger codigo;
+    private Integer codigo;
     @Column(name = "FECHA_VENCIMIENTO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaVencimiento;
@@ -62,15 +67,21 @@ public class TarjetaCredito implements Serializable {
     public TarjetaCredito() {
     }
 
-    public TarjetaCredito(BigDecimal idTarjetaCredito) {
+    public TarjetaCredito(String nombre, Integer codigo, Date fechaVencimiento) {
+        this.nombre = nombre;
+        this.codigo = codigo;
+        this.fechaVencimiento = fechaVencimiento;
+    }
+        
+    public TarjetaCredito(Integer idTarjetaCredito) {
         this.idTarjetaCredito = idTarjetaCredito;
     }
 
-    public BigDecimal getIdTarjetaCredito() {
+    public Integer getIdTarjetaCredito() {
         return idTarjetaCredito;
     }
 
-    public void setIdTarjetaCredito(BigDecimal idTarjetaCredito) {
+    public void setIdTarjetaCredito(Integer idTarjetaCredito) {
         this.idTarjetaCredito = idTarjetaCredito;
     }
 
@@ -82,11 +93,11 @@ public class TarjetaCredito implements Serializable {
         this.nombre = nombre;
     }
 
-    public BigInteger getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(BigInteger codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
